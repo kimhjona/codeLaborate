@@ -2,44 +2,39 @@ const Users = require('./../models/UserModel');
 
 
 const UserController = {
-  //register user, if username already exists send 'already exists' message
-  signup: function(req, res) {
+  // register user, if username already exists send 'already exists' message
+  signup(req, res) {
     Users.find({
-      where: {username: req.body.username}
+      where: { username: req.body.username },
     })
-    .then(function(user) {
-      if (user) {
-        return res.send({message: 'Username already exists', view: 1});
-      } else {
+    .then((user) => {
+      if (user) res.send({ message: 'Username already exists', view: 1 });
+      else {
         Users.create({
           username: req.body.username,
           password: req.body.password,
-          name: req.body.name
+          name: req.body.name,
         })
-        .then(function(user) {
-          res.send({message: 'New user created!', view: 0});
+        .then((user2) => {
+          res.send({ message: `New user, ${user2} created!`, view: 0 });
         });
       }
-    })
+    });
   },
-  //login user, if user or password is invalid, send 'invalid' message
-  login: function(req, res) {
-    console.log(req.body);
+  // login user, if user or password is invalid, send 'invalid' message
+  login(req, res) {
     Users.findOne({
-      where: {username: req.body.username}
-    }).then(function(user) {
-      console.log('found user: ', user);
+      where: { username: req.body.username },
+    }).then((user) => {
       if (!user) {
-         res.send({view: 0, message: 'Invalid Login'});
+        res.send({ view: 0, message: 'Invalid Login' });
       } else if (user.password === req.body.password) {
-        console.log('req body: ', req.body);
-        res.send({view: 2});
+        res.send({ view: 2 });
       } else {
-        console.log('req body: ', req.body);
-        res.send({view: 0, message: 'Invalid Login'});
+        res.send({ view: 0, message: 'Invalid Login' });
       }
     });
-  }
-}
+  },
+};
 
 module.exports = UserController;
