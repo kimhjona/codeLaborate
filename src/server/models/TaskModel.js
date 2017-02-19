@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('./../database');
-const Projects = require('./ProjectModel')
+const Projects = require('./ProjectModel');
 
 const Tasks = sequelize.define('tasks', {
   taskName: {
@@ -20,7 +20,7 @@ const Tasks = sequelize.define('tasks', {
     field: 'task_content',
   },
 }, {
-  freezeTableName: true
+  freezeTableName: true,
 });
 
 Tasks.belongsTo(Projects);

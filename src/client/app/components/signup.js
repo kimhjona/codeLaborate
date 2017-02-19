@@ -1,42 +1,53 @@
-import React, { Component } from 'react';
-import Header from './header';
+import React from 'react';
 
+const Signup = (props) => {
+  const { message, name, username, password, nameChange, usernameChange,
+          passwordChange, signUpPost, newRegistration } = props;
 
-class Signup extends Component {
-  render() {
-    return (
-        <div id='auth'>
-        <img src="http://i.imgur.com/dLQMwZp.png" className="logo" />
-        <h2>CodeLaborate</h2>
-        <h5 id='message'>{this.props.message}</h5>
-        <h4>Sign Up</h4>
-          <input
-            className='name'
-            type='text'
-            placeholder='Your Name'
-            value={this.props.name}
-            onChange={(e) => {this.props.nameChange(e)}}>
-          </input>
-          <input
-            className='username'
-            type='text'
-            placeholder='Username'
-            value={this.props.username}
-            onChange={ (e) => {this.props.usernameChange(e)}}>
-          </input>
-          <input
-            className='password'
-            type='password'
-            placeholder='Password'
-            value={this.props.password}
-            onChange={ (e) => {this.props.passwordChange(e)}}>
-          </input>
-          <button onClick={ () => {this.props.signUpPost()}} >Register</button>
+  return (
+    <div id="auth">
+      <img src="http://i.imgur.com/dLQMwZp.png" className="logo" alt="codeLaborate logo" />
+      <h2>CodeLaborate</h2>
+      <h5 id="message">{message}</h5>
+      <h4>Sign Up</h4>
+      <input
+        className="name"
+        type="text"
+        placeholder="Your Name"
+        value={name}
+        onChange={(e) => { nameChange(e); }}
+      />
+      <input
+        className="username"
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => { usernameChange(e); }}
+      />
+      <input
+        className="password"
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => { passwordChange(e); }}
+      />
+      <button onClick={() => { signUpPost(); }} >Register</button>
 
-          <p><a onClick={this.props.newRegistration} >Actually, I have an account!</a></p>
-        </div>
-    )
-  }
-}
+      <p><a onClick={newRegistration()} >Actually, I have an account!</a></p>
+    </div>
+  );
+};
+
+Signup.propTypes = {
+  message: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string.isRequired,
+  username: React.PropTypes.string.isRequired,
+  password: React.PropTypes.string.isRequired,
+  nameChange: React.PropTypes.func.isRequired,
+  usernameChange: React.PropTypes.func.isRequired,
+  passwordChange: React.PropTypes.func.isRequired,
+  signUpPost: React.PropTypes.func.isRequired,
+  newRegistration: React.PropTypes.func.isRequired,
+};
 
 export default Signup;

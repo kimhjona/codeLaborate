@@ -1,33 +1,43 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Login extends Component {
+const Login = (props) => {
+  const { message, username, password, usernameChange,
+          passwordChange, userVerify, newRegistration } = props;
 
-  render() {
-    return (
-      <div id='auth'>
-        <img src="http://i.imgur.com/dLQMwZp.png" className="logo" />
-        <h2>CodeLaborate</h2>
-        <h5 id='message'>{this.props.message}</h5>
-        <h4>Log in</h4>
-          <input
-            className='username'
-            type='text'
-            placeholder='Username'
-            value={this.props.username}
-            onChange={ (e) => {this.props.usernameChange(e)}}>
-          </input>
-          <input
-            className='password'
-            type='password'
-            placeholder='Password'
-            value={this.props.password}
-            onChange={ (e) => {this.props.passwordChange(e)}}>
-          </input>
-          <button onClick={ () => {this.props.userVerify()}} >Log in</button>
-        <p>New User? <a onClick={this.props.newRegistration}>Sign up here.</a></p>
-      </div>
-    )
-  }
-}
+  return (
+    <div id="auth">
+      <img src="http://i.imgur.com/dLQMwZp.png" className="logo" alt="codeLaborate logo" />
+      <h2>CodeLaborate</h2>
+      <h5 id="message">{message}</h5>
+      <h4>Log in</h4>
+      <input
+        className="username"
+        type="text"
+        placeholder="Username"
+        value={username}
+        onChange={(e) => { usernameChange(e); }}
+      />
+      <input
+        className="password"
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => { passwordChange(e); }}
+      />
+      <button onClick={() => { userVerify(); }} >Log in</button>
+      <p>New User? <a onClick={newRegistration()}>Sign up here.</a></p>
+    </div>
+  );
+};
+
+Login.propTypes = {
+  message: React.PropTypes.string.isRequired,
+  username: React.PropTypes.string.isRequired,
+  password: React.PropTypes.string.isRequired,
+  usernameChange: React.PropTypes.func.isRequired,
+  passwordChange: React.PropTypes.func.isRequired,
+  userVerify: React.PropTypes.func.isRequired,
+  newRegistration: React.PropTypes.func.isRequired,
+};
 
 export default Login;

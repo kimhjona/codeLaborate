@@ -1,48 +1,49 @@
 const Projects = require('./../models/ProjectModel');
 const ProjectUsers = require('./../models/ProjectUserModel');
 
-//create new project
+// create new project
 const ProjectController = {
-  create: function(req, res) {
+  create(req, res) {
     Projects.create({
       title: req.body.title,
-      summary: req.body.summary
-    }).then(function(project) {
+      summary: req.body.summary,
+    }).then((project) => {
       res.send({
-        message: 'New project created!',
-        view: 2
-      })
+        message: `New project, ${project}, created!`,
+        view: 2,
+      });
     });
   },
 
-//update project
-  update: function(req, res) {
+// update project
+  update(req, res) {
     Projects.findOne({
-      where: {title: req.body.title}
+      where: { title: req.body.title },
     })
-    .then(function(project) {
+    .then((project) => {
       project.update({
         // will the req body have updated info?
         // or just snippet to add to existing info?
         title: req.body.title,
-        summary: req.body.summary
+        summary: req.body.summary,
       })
-      .then(function(project) {
-        res.send(project.title + ' project updated: ' + project);
+      .then((project2) => {
+        res.send(`${project2.title} project updated: ${project2}`);
       });
-    })
+    });
   },
 
-//delete project
-  delete: function(req, res) {
+// delete project
+  delete(req, res) {
     Projects.findOne({
-      where: {title: req.body.title}
-    }).then(function(project) {
-      project.destroy().then(function() {
+      where: { title: req.body.title },
+    }).then((project) => {
+      project.destroy()
+      .then(() => {
         res.send('Project deleted');
       });
     });
-  }
-}
+  },
+};
 
 module.exports = ProjectController;
