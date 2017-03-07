@@ -1,6 +1,5 @@
 const Users = require('./../models/UserModel');
 
-
 const UserController = {
   // register user, if username already exists send 'already exists' message
   signup(req, res) {

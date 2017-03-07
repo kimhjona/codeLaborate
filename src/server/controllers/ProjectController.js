@@ -7,7 +7,8 @@ const ProjectController = {
     Projects.create({
       title: req.body.title,
       summary: req.body.summary,
-    }).then((project) => {
+    })
+    .then((project) => {
       res.send({
         message: `New project, ${project}, created!`,
         view: 2,
