@@ -1,7 +1,6 @@
 const express = require('express');
 // var fs = require('fs');
 const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000;
 const pg = require('pg');
 const db = require('./database');
 const path = require('path');
@@ -9,33 +8,34 @@ const UserController = require('./controllers/UserController');
 const ProjectController = require('./controllers/ProjectController');
 const TaskController = require('./controllers/TaskController');
 
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-//get index.html
-app.get('/', function (req, res) {
+// get index.html
+app.get('/', (req, res) => {
   res.status(200);
-  res.set({'Content-Type': 'text/html; charset=utf-8'});
+  res.set({ 'Content-Type': 'text/html; charset=utf-8' });
   res.sendFile(path.join(__dirname, '/../client/index.html'));
-})
+});
 
-//get style.css
-app.get('/style.css', function (req, res) {
+// get style.css
+app.get('/style.css', (req, res) => {
   res.status(200);
-  res.set({'Content-Type': 'text/css; charset=utf-8'});
+  res.set({ 'Content-Type': 'text/css; charset=utf-8' });
   res.sendFile(path.join(__dirname, '/../client/style.css'));
-})
+});
 
-//get bundle.js
-app.get('/bundle.js', function (req, res) {
+// get bundle.js
+app.get('/bundle.js', (req, res) => {
   res.status(200);
-  res.set({'Content-Type': 'application/json; charset=utf-8'});
+  res.set({ 'Content-Type': 'application/json; charset=utf-8' });
   res.sendFile(path.join(__dirname, '/../client/public/bundle.js'));
-})
+});
 
-app.use(express.static(path.join( __dirname, '../client/')));
+app.use(express.static(path.join(__dirname, '../client/')));
 
 // add new user to database from sign-up page, send to userController middleware
 app.post('/signup', UserController.signup);
@@ -47,6 +47,6 @@ app.post('/login', UserController.login);
 app.post('/createProject', ProjectController.create);
 
 app.listen(port, () => {
-  console.log("Listening on port " + port);
+  console.log(`Listening on port ${port}`);
 });
 

@@ -4,7 +4,7 @@ const Users = require('./UserModel');
 const Projects = require('./ProjectModel');
 
 const ProjectUsers = sequelize.define('project_users', {}, {
-  freezeTableName: true
+  freezeTableName: true,
 });
 
 ProjectUsers.belongsTo(Users);

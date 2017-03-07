@@ -11,7 +11,7 @@ const Projects = sequelize.define('projects', {
     field: 'summary',
   },
 }, {
-  freezeTableName: true
+  freezeTableName: true,
 });
 
 Projects.sync();
