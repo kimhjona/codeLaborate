@@ -13,9 +13,9 @@ const Users = sequelize.define('users', {
   name: {
     type: Sequelize.STRING,
     field: 'first_name',
-  }
+  },
 }, {
-  freezeTableName: true
+  freezeTableName: true,
 });
 
 Users.sync();
