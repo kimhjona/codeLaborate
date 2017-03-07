@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from './header';
+import Header from './header.jsx';
 
 const Dashboard = (props) => {
   const { changeView } = props;
 
   return (
     <div>
-      <Header />
+      <Header changeView={changeView} />
       <section id="main">
         <div className="container">
           <div className="content">
@@ -15,7 +15,7 @@ const Dashboard = (props) => {
               You currently have no projects.
               <a
                 href="#"
-                onClick={() => { changeView(3); }}
+                onClick={() => { changeView('addProj'); }}
               >Create a project</a>
               .
             </p>

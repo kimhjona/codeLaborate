@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Login from './login';
-import Signup from './signup';
-import Dashboard from './dashboard';
-import AddProj from './addProj';
+import Login from './login.jsx';
+import Signup from './signup.jsx';
+import Dashboard from './dashboard.jsx';
+import AddProj from './addProj.jsx';
 import styles from './../../style.css';
 
 
@@ -12,7 +12,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 0,
+      page: 'login',
       name: '',
       username: '',
       password: '',
@@ -21,7 +21,6 @@ class App extends Component {
       newProjectSummary: '',
     };
 
-    this.newRegistration = this.newRegistration.bind(this);
     this.signUpPost = this.signUpPost.bind(this);
     this.usernameChange = this.usernameChange.bind(this);
     this.nameChange = this.nameChange.bind(this);
@@ -30,15 +29,6 @@ class App extends Component {
     this.changeView = this.changeView.bind(this);
     this.projChange = this.projChange.bind(this);
     this.createProject = this.createProject.bind(this);
-  }
-
-// setState to change Login page to SignUp page
-  newRegistration() {
-    if (this.state.page === 0) {
-      this.setState({ page: 1 });
-    } else {
-      this.setState({ page: 0 });
-    }
   }
 
 // register new user on signup page, create new user in database, send client to login page
@@ -82,8 +72,8 @@ class App extends Component {
   }
 
 // changes to appropriate view based on passed in variable
-  changeView(num) {
-    this.setState({ page: num });
+  changeView(page) {
+    this.setState({ page });
   }
 
 // wraps username input and sends username value to state
@@ -116,10 +106,10 @@ class App extends Component {
 
 // conditional rendering for components based on 'page' property in state
   render() {
-    if (this.state.page === 0) {
+    if (this.state.page === 'login') {
       return (
         <Login
-          newRegistration={this.newRegistration}
+          changeView={this.changeView}
           page={this.state.page}
           userVerify={this.userVerify}
           usernameChange={this.usernameChange}
@@ -127,10 +117,10 @@ class App extends Component {
           message={this.state.message}
         />
       );
-    } else if (this.state.page === 1) {
+    } else if (this.state.page === 'signup') {
       return (
         <Signup
-          newRegistration={this.newRegistration}
+          changeView={this.changeView}
           usernameChange={this.usernameChange}
           nameChange={this.nameChange}
           passwordChange={this.passwordChange}
@@ -141,13 +131,13 @@ class App extends Component {
           message={this.state.message}
         />
       );
-    } else if (this.state.page === 2) {
+    } else if (this.state.page === 'dash') {
       return (
         <Dashboard
           changeView={this.changeView}
         />
       );
-    } else if (this.state.page === 3) {
+    } else if (this.state.page === 'addProj') {
       return (
         <AddProj
           projChange={this.projChange}

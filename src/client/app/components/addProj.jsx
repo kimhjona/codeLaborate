@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './header';
+import Header from './header.jsx';
 
 const cssClasses = 'form-row clearfix';
 
@@ -8,7 +8,7 @@ const AddProj = (props) => {
 
   return (
     <div>
-      <Header changeView={changeView()} />
+      <Header changeView={changeView} />
       <section id="main">
         <div className="container">
           <div className="content">
