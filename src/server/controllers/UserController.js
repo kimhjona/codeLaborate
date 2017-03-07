@@ -7,7 +7,7 @@ const UserController = {
       where: { username: req.body.username },
     })
     .then((user) => {
-      if (user) res.send({ message: 'Username already exists', view: 1 });
+      if (user) res.send({ message: 'Username already exists', view: 'signup' });
       else {
         Users.create({
           username: req.body.username,
@@ -15,7 +15,7 @@ const UserController = {
           name: req.body.name,
         })
         .then((user2) => {
-          res.send({ message: `New user, ${user2} created!`, view: 0 });
+          res.send({ message: `New user, ${user2} created!`, view: 'login' });
         });
       }
     });
@@ -26,11 +26,11 @@ const UserController = {
       where: { username: req.body.username },
     }).then((user) => {
       if (!user) {
-        res.send({ view: 0, message: 'Invalid Login' });
+        res.send({ view: 'login', message: 'Invalid Login' });
       } else if (user.password === req.body.password) {
-        res.send({ view: 2 });
+        res.send({ view: 'dash' });
       } else {
-        res.send({ view: 0, message: 'Invalid Login' });
+        res.send({ view: 'login', message: 'Invalid Login' });
       }
     });
   },
