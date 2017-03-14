@@ -33,7 +33,7 @@ const Signup = (props) => {
       />
       <button onClick={() => { signUpPost(); }} >Register</button>
 
-      <p><a onClick={() => { changeView('login'); }} >Actually, I have an account!</a></p>
+      <p><span className="route-link" onClick={() => { changeView('login'); }} >Actually, I have an account!</span></p>
     </div>
   );
 };

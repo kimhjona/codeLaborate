@@ -42,6 +42,15 @@ a {
   color: deepskyblue;
 }
 
+.route-link {
+  text-decoration: none;
+  color: deepskyblue;
+}
+
+.route-link:hover {
+  cursor: pointer;
+}
+
 /* Container
 ============================================================== */
 .container {
@@ -88,8 +97,12 @@ header nav li {
   font-size: 13px;
 }
 
-header a {
+header span {
   color: #666;
+}
+
+header span:hover {
+  cursor: pointer;
 }
 
 header nav li:last-of-type {
@@ -441,8 +454,5 @@ footer {
 
 #auth a {
   cursor: pointer;
-}
-
-.username {
 }
 

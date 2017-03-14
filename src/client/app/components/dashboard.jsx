@@ -12,11 +12,11 @@ const Dashboard = (props) => {
           <div className="content">
             <h2>Projects</h2>
             <p className="no-projects">
-              You currently have no projects.
-              <a
-                href="#"
+              You currently have no projects.&nbsp;
+              <span
+                className="route-link"
                 onClick={() => { changeView('addProj'); }}
-              >Create a project</a>
+              >Create a project</span>
               .
             </p>
           </div>

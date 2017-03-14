@@ -4,7 +4,9 @@ import Login from './login.jsx';
 import Signup from './signup.jsx';
 import Dashboard from './dashboard.jsx';
 import AddProj from './addProj.jsx';
+/* eslint-disable */
 import styles from './../../style.css';
+/* eslint-enable */
 
 
 class App extends Component {
