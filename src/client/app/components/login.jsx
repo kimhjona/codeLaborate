@@ -25,7 +25,7 @@ const Login = (props) => {
         onChange={(e) => { passwordChange(e); }}
       />
       <button onClick={() => { userVerify(); }} >Log in</button>
-      <p>New User? <a onClick={() => { changeView('signup'); }}>Sign up here.</a></p>
+      <p>New User? <span className="route-link" onClick={() => { changeView('signup'); }}>Sign up here.</span></p>
     </div>
   );
 };

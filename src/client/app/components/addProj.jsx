@@ -1,7 +1,9 @@
 import React from 'react';
 import Header from './header.jsx';
 
+/* eslint-disable */
 const cssClasses = 'form-row clearfix';
+/* eslint-enable*/
 
 const AddProj = (props) => {
   const { changeView, projChange, createProject } = props;
@@ -49,7 +51,7 @@ const AddProj = (props) => {
                 >
                 Save Project
                 </button>
-                <a href="#" className="reset-project">Reset Project</a>
+                <span className="reset-project route-link">Reset Project</span>
               </div>
             </div>
           </div>
