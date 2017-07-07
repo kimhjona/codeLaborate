@@ -9,6 +9,9 @@
     "build": "./node_modules/.bin/webpack -w",
     "lint": "./node_modules/.bin/eslint src"
   },
+  "engines": {
+    "node": "6.9.1"
+  },
   "author": "",
   "license": "MIT",
   "devDependencies": {
